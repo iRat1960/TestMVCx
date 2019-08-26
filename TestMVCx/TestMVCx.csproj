@@ -136,6 +136,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\CreateTables.sql" />
     <Content Include="App_Data\TestDatabase.mdf" />
     <Content Include="App_Data\TestDatabase_log.ldf">
       <DependentUpon>TestDatabase.mdf</DependentUpon>
