@@ -9,6 +9,13 @@ namespace TestMVCx.Models
 {
     public class Relative
     {
+        public Relative() { }
+
+        public Relative(int[] i)
+        {
+            ChildID = i[0];
+            ParentID = i[1];
+        }
         [Key]
         public int ChildID { get; set; }
         public int ParentID { get; set; }
