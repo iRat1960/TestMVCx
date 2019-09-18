@@ -46,6 +46,7 @@ namespace TestMVCx.Controllers
                                 {
                                     db.Relatives.Add(u.Relative);
                                 }
+
                                 try
                                 {
                                     db.SaveChanges();

@@ -135,10 +135,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\CreateTables.sql" />
-    <Content Include="App_Data\TestDatabase.mdf" />
-    <Content Include="App_Data\TestDatabase_log.ldf">
-      <DependentUpon>TestDatabase.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />

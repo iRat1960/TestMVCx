@@ -17,6 +17,6 @@ CREATE TABLE [dbo].[Relatives] (
     [ChildId]  INT NOT NULL,
     [ParentId] INT NOT NULL,
     PRIMARY KEY CLUSTERED ([ChildId] ASC),
-    CONSTRAINT [FK_Relatives_Users] FOREIGN KEY ([ParentId]) REFERENCES [dbo].[Users] ([Id])
+    CONSTRAINT [FK_Relatives_Users_ParentID] FOREIGN KEY ([ParentId]) REFERENCES [dbo].[Users] ([Id])
 );
 GO

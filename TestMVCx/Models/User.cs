@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -25,8 +26,11 @@ namespace TestMVCx.Models
             else
                 Relative = new Relative(new int[] { ID, ParentID });
         }
-        
+
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
+        [Required]
+        [StringLength(50)]
         [Display(Name = "Имя")]
         public string Name { get; set; }
         [Display(Name = "Дата рождения")]
@@ -37,10 +41,14 @@ namespace TestMVCx.Models
         public int ParentID { get; set; }
 
         public Relative Relative { get; set; }
+
+        public virtual ICollection<Relative> Parent { get; set; }
+        
     }
 
     public class UserDbInitializer : DropCreateDatabaseAlways<RelativeContext>
     {
+
         protected override void Seed(RelativeContext context)
         {
             int ct = context.Users.Count();
