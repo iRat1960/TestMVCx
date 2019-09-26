@@ -140,7 +140,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\PlayersListViewModel.cs" />
     <Compile Include="Models\Relative.cs" />
+    <Compile Include="Models\Team.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -195,6 +198,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\LoadFile.cshtml" />
+    <Content Include="Views\Home\FilterData.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\Home\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
