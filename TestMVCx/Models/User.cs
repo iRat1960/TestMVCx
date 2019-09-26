@@ -11,6 +11,22 @@ namespace TestMVCx.Models
 {
     public class User
     {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ID { get; set; }
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Имя")]
+        public string Name { get; set; }
+        [Display(Name = "Дата рождения")]
+        public DateTime DateBirth { get; set; }
+        [Display(Name = "Пол")]
+        public bool Gender { get; set; }
+        [Display(Name = "Имя родителя")]
+        public int ParentID { get; set; }
+        public Relative Relative { get; set; }
+
+        public virtual ICollection<Relative> Parent { get; set; }
+
         public User() { }
 
         public User(string[] str)
@@ -26,24 +42,6 @@ namespace TestMVCx.Models
             else
                 Relative = new Relative(new int[] { ID, ParentID });
         }
-
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
-        [Required]
-        [StringLength(50)]
-        [Display(Name = "Имя")]
-        public string Name { get; set; }
-        [Display(Name = "Дата рождения")]
-        public DateTime DateBirth { get; set; }
-        [Display(Name = "Пол")]
-        public bool Gender { get; set; }
-        [Display(Name = "Имя родителя")]
-        public int ParentID { get; set; }
-
-        public Relative Relative { get; set; }
-
-        public virtual ICollection<Relative> Parent { get; set; }
-        
     }
 
     public class UserDbInitializer : DropCreateDatabaseAlways<RelativeContext>

@@ -11,6 +11,7 @@ namespace TestMVCx.Content
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Relative> Relatives { get; set; }
+        public DbSet<MenuItem> MenuItems { get; set; }
 
     }
 }

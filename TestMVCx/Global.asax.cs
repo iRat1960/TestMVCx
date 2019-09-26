@@ -15,6 +15,7 @@ namespace TestMVCx
         protected void Application_Start()
         {
             Database.SetInitializer(new UserDbInitializer());
+            Database.SetInitializer(new AppDbInitializer());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

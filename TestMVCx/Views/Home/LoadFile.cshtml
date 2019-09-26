@@ -1,0 +1,60 @@
+﻿@model IEnumerable<TestMVCx.Models.User>
+
+@{
+    ViewBag.Title = "Загрузка данных";
+}
+
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+@using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="uploadFile" />
+    <br>
+    <input type="submit" name="ImportButton" value=" Импорт данных " />
+    <input type="submit" name="ClearButton" value="Очистить таблицу" />
+}
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentID)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateBirth)
+            </td>
+            <td>
+                @if (item.Gender == true)
+                {
+                    <a>Муж</a>
+                }
+                else
+                {
+                    <a>Жен</a>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Relative.ParentUser.Name)
+            </td>
+        </tr>
+    }
+
+</table>
