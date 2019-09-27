@@ -12,5 +12,6 @@ namespace TestMVCx.Models
         public IEnumerable<Player> Players { get; set; }
         public SelectList Teams { get; set; }
         public SelectList Positions { get; set; }
+        public PageInfo PageInfo { get; set; }
     }
 }

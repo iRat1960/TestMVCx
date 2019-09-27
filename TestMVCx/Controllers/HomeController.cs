@@ -177,7 +177,7 @@ namespace TestMVCx.Controllers
             return View(team);
         }
 
-        public ActionResult FilterData(int? team, string position)
+        public ActionResult FilterData(int? team, string position, int page = 1)
         {
             ViewBag.Message = "Каталог игроков.";
             IQueryable<Player> players = db.Players.Include(o => o.Team);
@@ -192,9 +192,14 @@ namespace TestMVCx.Controllers
             List<Team> teams = db.Teams.ToList();
             teams.Insert(0, new Team { Name = "Все", Id = 0 });
 
+            // Пагинация
+            int pageSize = 4;
+            IEnumerable<Player> playersPerPage = players.OrderBy(o => o.Id).Skip((page - 1) * pageSize).Take(pageSize);
+            PageInfo pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = players.Count() };
+
             PlayersListViewModel plvm = new PlayersListViewModel
             {
-                Players = players.ToList(),
+                Players = playersPerPage,
                 Teams = new SelectList(teams, "Id", "Name"),
                 Positions = new SelectList(new List<string>()
                 {
@@ -203,7 +208,8 @@ namespace TestMVCx.Controllers
                     "Полузащитник",
                     "Защитник",
                     "Вратарь"
-                })
+                }),
+                PageInfo = pageInfo
             };
             return View(plvm);
         }
@@ -299,7 +305,7 @@ namespace TestMVCx.Controllers
                     }
                 }
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("LoadFile");
         }
 
         public ActionResult About()

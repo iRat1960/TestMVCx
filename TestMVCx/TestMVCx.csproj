@@ -139,7 +139,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PagingHelpers.cs" />
     <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Models\PageInfo.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PlayersListViewModel.cs" />
     <Compile Include="Models\Relative.cs" />

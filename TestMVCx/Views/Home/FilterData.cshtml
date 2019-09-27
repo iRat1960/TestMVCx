@@ -1,4 +1,5 @@
-﻿@model TestMVCx.Models.PlayersListViewModel
+﻿@using TestMVCx.Helpers
+@model TestMVCx.Models.PlayersListViewModel
 
 @{
     ViewBag.Title = "Фильтрация данных";
@@ -21,7 +22,7 @@
         <input type="submit" value="Фильтр" class="btn btn-default" />
     </div>
 </form>
-<br/>
+<br />
 <table class="table">
     <tr>
         <th>Имя игрока</th>
@@ -53,6 +54,11 @@
         </tr>
     }
 </table>
+
 <p>
     @Html.ActionLink("Список команд", "ListTeams")
 </p>
+<br />
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("FilterData", new { page = x }))
+</div>
