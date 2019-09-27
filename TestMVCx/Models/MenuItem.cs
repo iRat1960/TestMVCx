@@ -66,6 +66,8 @@ namespace TestMVCx.Models
             db.Players.AddRange(player);
             db.SaveChanges();
 
+            db.Database.ExecuteSqlCommand("ALTER TABLE [dbo].[Players] DROP CONSTRAINT [FK_dbo.Players_dbo.Teams_TeamId]");
+            db.Database.ExecuteSqlCommand("ALTER TABLE [dbo].[Players] ADD CONSTRAINT [FK_dbo.Players_dbo.Teams_TeamId] FOREIGN KEY ([TeamId]) REFERENCES [dbo].[Teams] ([Id]) ON DELETE SET NULL");
             
         }
     }

@@ -13,7 +13,7 @@ namespace TestMVCx.Models
         public string Name { get; set; }
         [Display(Name = "Тренер")]
         public string Coach { get; set; }
-
+        [Display(Name = "Игроки")]
         public ICollection<Player> Players { get; set; }
 
         public Team()

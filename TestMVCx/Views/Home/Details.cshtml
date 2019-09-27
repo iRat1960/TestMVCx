@@ -1,0 +1,58 @@
+﻿@model TestMVCx.Models.Team
+@using TestMVCx.Models
+
+@{
+    ViewBag.Title = ViewBag.Message;
+}
+
+<h3>@ViewBag.Message</h3>
+
+<div>
+    <h4>Футбольная команда</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Coach)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Coach)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Players)
+        </dt>
+        <dd> - - - - - </dd>
+        @foreach (Player p in ViewBag.Players as List<Player>)
+        {
+            <dt>
+                @Html.DisplayNameFor(modelItem => p.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(modelItem => p.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(modelItem => p.Age)
+            </dt>
+            <dd>
+                @Html.DisplayFor(modelItem => p.Age)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(modelItem => p.Position)
+            </dt>
+            <dd>
+                @Html.DisplayFor(modelItem => p.Position)
+            </dd>
+        }
+
+    </dl>
+</div>
+<br/>
+<p>
+    @Html.ActionLink("Изменить", "EditTeam", new { id = Model.Id }) |
+    @Html.ActionLink("К списку команд", "ListTeams")
+</p>

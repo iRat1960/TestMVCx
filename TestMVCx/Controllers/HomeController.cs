@@ -45,6 +45,21 @@ namespace TestMVCx.Controllers
             db.SaveChanges();
             return RedirectToAction("FilterData");
         }
+
+        [HttpGet]
+        public ActionResult CreateTeam()
+        {
+            ViewBag.Message = "Добавление команды";
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateTeam(Team team)
+        {
+            db.Teams.Add(team);
+            db.SaveChanges();
+            return RedirectToAction("ListTeams");
+        }
+
         [HttpGet]
         public ActionResult Edit(int? id)
         {
@@ -77,6 +92,30 @@ namespace TestMVCx.Controllers
             db.SaveChanges();
             return RedirectToAction("FilterData");
         }
+
+        [HttpGet]
+        public ActionResult EditTeam(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Message = "Внесение изменений";
+            Team team = db.Teams.Find(id);
+            if (team != null)
+            {
+                return View(team);
+            }
+            return RedirectToAction("FilterData");
+        }
+        [HttpPost]
+        public ActionResult EditTeam(Team team)
+        {
+            db.Entry(team).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("ListTeams");
+        }
+
         [HttpGet]
         public ActionResult Delete(int id)
         {
@@ -100,6 +139,44 @@ namespace TestMVCx.Controllers
             db.SaveChanges();
             return RedirectToAction("FilterData");
         }
+
+        [HttpGet]
+        public ActionResult DeleteTeam(int id)
+        {
+            Team team = db.Teams.Find(id);
+            if (team == null)
+            {
+                return HttpNotFound();
+            }
+            return View(team);
+        }
+        [HttpPost, ActionName("DeleteTeam")]
+        public ActionResult DeleteTeamConfirmed(int id)
+        {
+            Team team = db.Teams.Find(id);
+            if (team == null)
+            {
+                return HttpNotFound();
+            }
+            team.Players = null;
+            db.Entry(team).State = EntityState.Deleted;
+            db.SaveChanges();
+            return RedirectToAction("ListTeams");
+        }
+
+        public ActionResult Details(int id = 0)
+        {
+            ViewBag.Message = "Информация о команде";
+            Team team = db.Teams.Find(id);
+            if (team == null)
+            {
+                return HttpNotFound();
+            }
+            List<Player> player = db.Players.Where(o => o.TeamId == team.Id).ToList();
+            ViewBag.Players = player;
+            return View(team);
+        }
+
         public ActionResult FilterData(int? team, string position)
         {
             ViewBag.Message = "Каталог игроков.";
@@ -130,7 +207,11 @@ namespace TestMVCx.Controllers
             };
             return View(plvm);
         }
-
+        public ActionResult ListTeams()
+        {
+            var team = db.Teams.Include(t => t.Players);
+            return View(team.ToList());
+        }
         public ActionResult LoadFile()
         {
             ViewBag.Message = "Выберите файл для загрузки:";

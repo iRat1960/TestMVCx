@@ -202,6 +202,11 @@
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Home\Delete.cshtml" />
+    <Content Include="Views\Home\ListTeams.cshtml" />
+    <Content Include="Views\Home\CreateTeam.cshtml" />
+    <Content Include="Views\Home\EditTeam.cshtml" />
+    <Content Include="Views\Home\DeleteTeam.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

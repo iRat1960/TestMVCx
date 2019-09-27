@@ -15,5 +15,7 @@ namespace TestMVCx.Content
         public DbSet<Player> Players { get; set; }
         public DbSet<Team> Teams { get; set; }
 
+        //db.Database.ExecuteSqlCommand("ALTER TABLE dbo.Players ADD CONSTRAINT Players_Teams FOREIGN KEY (TeamId) REFERENCES dbo.Teams (Id) ON DELETE SET NULL");
+
     }
 }

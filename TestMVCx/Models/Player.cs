@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -15,7 +16,7 @@ namespace TestMVCx.Models
         public int Age { get; set; }
         [Display(Name = "Позиция на поле")]
         public string Position { get; set; }
-        
+
         public int? TeamId { get; set; }
         public Team Team { get; set; }
     }
