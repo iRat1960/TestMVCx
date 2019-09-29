@@ -36,10 +36,10 @@ namespace TestMVCx.Models
                 new MenuItem{Id=4, Header = "Контакты", Url = "/Home/Contact", Order = 4},
                 new MenuItem{Id=5, Header = "Меню второго уровня 1", Url = "#", Order = 1, ParentId = 2},
                 new MenuItem{Id=6, Header = "Загрузка данных", Url = "/Home/LoadFile", Order = 2, ParentId = 2},
-                new MenuItem{Id=7, Header = "Фильтрация данных", Url = "#", Order = 3, ParentId = 2},
-                new MenuItem{Id=8, Header = "Меню третьго уровня 1", Url = "#",  Order = 1, ParentId = 5},
-                new MenuItem{Id=9, Header = "Меню третьго уровня 2", Url = "#", Order = 2, ParentId = 5},
-                new MenuItem{Id=10, Header = "Меню третьго уровня 3", Url = "#", Order = 3, ParentId = 5}
+                new MenuItem{Id=7, Header = "Фильтрация данных", Url = "/Home/FilterData", Order = 3, ParentId = 2},
+                new MenuItem{Id=8, Header = "Меню третьего уровня 1", Url = "#",  Order = 1, ParentId = 5},
+                new MenuItem{Id=9, Header = "Меню третьего уровня 2", Url = "#", Order = 2, ParentId = 5},
+                new MenuItem{Id=10, Header = "Меню третьего уровня 3", Url = "#", Order = 3, ParentId = 5}
             };
             db.MenuItems.AddRange(menuItems);
             db.SaveChanges();

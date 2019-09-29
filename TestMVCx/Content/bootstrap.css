@@ -2430,7 +2430,7 @@ th {
   background-color: #f9f9f9;
 }
 .table-hover > tbody > tr:hover {
-  background-color: #f5f5f5;
+  background-color: #f1a588;
 }
 .table > thead > tr > td.active,
 .table > tbody > tr > td.active,
@@ -2451,7 +2451,7 @@ th {
 .table-hover > tbody > tr.active:hover > td,
 .table-hover > tbody > tr:hover > .active,
 .table-hover > tbody > tr.active:hover > th {
-  background-color: #e8e8e8;
+  background-color: #337ab7;
 }
 .table > thead > tr > td.success,
 .table > tbody > tr > td.success,
